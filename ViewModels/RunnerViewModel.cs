@@ -19,6 +19,7 @@ namespace RunningMVC.ViewModels
         public string Surname { get; set; }
         [Required]
         [DateMinEighteen(ErrorMessage = "Runner must be at least 18 years old.")]
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         [Required]
         [MaxLength(100)]

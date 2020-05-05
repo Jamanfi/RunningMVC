@@ -27,7 +27,7 @@
             <div class="row">
                 @foreach (var c in currentRace.Competitors)
                 {
-                    <div class="col-3 border bg-light rounded mr-1">
+                    <div class="col-3 border bg-light rounded mr-1 p-3">
                         <h5>@c.Runner.Forename @c.Runner.Surname</h5>
                         <span>Nationality: @c.Runner.Nationality</span><br />
                         <span>Age: @(DateTime.Today.Year - @c.Runner.DateOfBirth.Year)</span><br />
