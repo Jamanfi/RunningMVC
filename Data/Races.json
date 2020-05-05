@@ -1,0 +1,20 @@
+[
+	{
+		"KmLength": 21,
+		"Name": "Ha Giang Marathon",
+		"Country": "Vietnam",
+		"EventTime": "2019-04-30T07:00:00"
+	},
+	{
+		"KmLength": 21,
+		"Name": "Ha Long Bay Heritage Marathon",
+		"Country": "Vietnam",
+		"EventTime": "2019-11-14T07:00:00"
+	},
+	{
+		"KmLength": 24,
+		"Name": "Shatin Twin Peaks 2019",
+		"Country": "Hong Kong",
+		"EventTime": "2019-12-23T07:00:00"
+	}
+]

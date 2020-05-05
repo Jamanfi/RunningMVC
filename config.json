@@ -1,0 +1,10 @@
+{
+	"ConnectionStrings":{
+		"RacesConnectionString": "server=(localdb)\\ProjectsV13;Database=RunnersDb;Integrated Security=true;MultipleActiveResultSets=true;"
+	},
+	"Logging":{
+		"LogLevel":{
+			"Default": "Warning" 
+    } 
+  } 
+}

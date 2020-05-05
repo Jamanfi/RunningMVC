@@ -1,0 +1,41 @@
+﻿@model List<Race>
+@{ var currentRace = @Model.Find(r => r.Id == ViewBag.RaceId);}
+<body>
+    <div class="text-center">
+        @foreach (var r in Model)
+        {
+            <a asp-controller="App" asp-action="Races" asp-route-raceId="@r.Id">@r.Name</a>
+            @if (Model.IndexOf(r) < Model.Count() - 1)
+            {
+                <span> | </span>
+            }
+        }
+    </div>
+    <div id="mainContent" class="row">
+        <div>
+            <div id="raceInfo" class="col-12 text-center pt-2">
+                <h2>@currentRace.Name</h2>
+                <h3>@currentRace.Country, @currentRace.EventTime.Date.ToString("MMMM yyyy")</h3>
+            </div>
+
+            <div id="divImage" class="col-6 offset-3 pt-3 pb-3">
+                <img id="raceImg" src="~/Images/@(currentRace.Name.Replace(" ", "").Substring(0,5)).jpg" title="" alt="" />
+            </div>
+        </div>
+        <div class="col-12" >
+            <h3 class="text-center col-12 pt-3 pb-3">Competitors</h3>
+            <div class="row">
+                @foreach (var c in currentRace.Competitors)
+                {
+                    <div class="col-3 border bg-light rounded mr-1">
+                        <h5>@c.Runner.Forename @c.Runner.Surname</h5>
+                        <span>Nationality: @c.Runner.Nationality</span><br />
+                        <span>Age: @(DateTime.Today.Year - @c.Runner.DateOfBirth.Year)</span><br />
+                        <span>Finish Time: @c.FinishTime</span>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+</body>
