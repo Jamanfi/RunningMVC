@@ -22,7 +22,7 @@
                 <img id="raceImg" src="~/Images/@(currentRace.Name.Replace(" ", "").Substring(0,5)).jpg" title="" alt="" />
             </div>
         </div>
-        <div class="col-12" >
+        <div class="col-12">
             <h3 class="text-center col-12 pt-3 pb-3">Competitors</h3>
             <div class="row">
                 @foreach (var c in currentRace.Competitors)
@@ -35,6 +35,17 @@
                     </div>
                 }
             </div>
+
+            <div>
+                <div class="col-12 text-center">
+                    <button id="btnNewComp" class="btn-primary mt-3">New Competitor</button>
+                </div>
+                <div id="newComp">
+
+                </div>
+            </div>
+
+
         </div>
 
     </div>

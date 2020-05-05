@@ -22,8 +22,6 @@ namespace RunningMVC.ViewModels
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         [Required]
-        [MaxLength(100)]
-        [MinLength(2)]
         public string Nationality { get; set; }
         public int RunnerId { get; set; }
     }

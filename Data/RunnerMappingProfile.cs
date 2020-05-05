@@ -14,7 +14,8 @@ namespace RunningMVC.Data
         public RunnerMappingProfile()
         {
             CreateMap<Runner, RunnerViewModel>()
-                .ForMember(r => r.RunnerId, ex => ex.MapFrom(r => r.Id));
+                .ForMember(r => r.RunnerId, ex => ex.MapFrom(r => r.Id))
+                .ReverseMap();
         }
     }
 }

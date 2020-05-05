@@ -11,6 +11,10 @@
     margin-top: 5px;
 }
 
+#newComp {
+    display: none;
+}
+
 /*#titles {
     margin: auto;
     width: 50%;
