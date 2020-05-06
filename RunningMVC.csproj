@@ -7,17 +7,27 @@
 
   <ItemGroup>
     <Compile Remove="fontawesome\**" />
+    <Compile Remove="Services\**" />
     <Compile Remove="wwwroot\lib\%2540fortawesome\**" />
+    <Compile Remove="wwwroot\lib\bootstrap\bootstrap-duration-picker\**" />
     <Compile Remove="wwwroot\lib\fortawesome\**" />
     <Content Remove="fontawesome\**" />
+    <Content Remove="Services\**" />
     <Content Remove="wwwroot\lib\%2540fortawesome\**" />
+    <Content Remove="wwwroot\lib\bootstrap\bootstrap-duration-picker\**" />
     <Content Remove="wwwroot\lib\fortawesome\**" />
     <EmbeddedResource Remove="fontawesome\**" />
+    <EmbeddedResource Remove="Services\**" />
     <EmbeddedResource Remove="wwwroot\lib\%2540fortawesome\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap\bootstrap-duration-picker\**" />
     <EmbeddedResource Remove="wwwroot\lib\fortawesome\**" />
     <None Remove="fontawesome\**" />
+    <None Remove="Services\**" />
     <None Remove="wwwroot\lib\%2540fortawesome\**" />
+    <None Remove="wwwroot\lib\bootstrap\bootstrap-duration-picker\**" />
     <None Remove="wwwroot\lib\fortawesome\**" />
+    <TypeScriptCompile Remove="Services\**" />
+    <TypeScriptCompile Remove="wwwroot\lib\bootstrap\bootstrap-duration-picker\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -166,10 +176,13 @@
     <Content Include="node_modules\jquery\LICENSE.txt" />
     <Content Include="node_modules\jquery\package.json" />
     <Content Include="node_modules\jquery\src\.eslintrc.json" />
+    <Content Include="wwwroot\lib\bootstrap\bootstrap-duration-picker\dist\bootstrap-duration-picker.css" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="RunningMVC.sln" />
+    <None Include="wwwroot\lib\bootstrap\bootstrap-duration-picker\dist\bootstrap-duration-picker-debug.js" />
+    <None Include="wwwroot\lib\bootstrap\bootstrap-duration-picker\dist\bootstrap-duration-picker.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
@@ -580,9 +593,5 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="OdeToCode.UseNodeModules" Version="3.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
