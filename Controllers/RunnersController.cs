@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using RunningMVC.Data;
 using RunningMVC.Data.Entities;
 using RunningMVC.ViewModels;
@@ -12,7 +13,6 @@ using Microsoft.Extensions.Logging;
 
 namespace RunningMVC.Controllers
 {
-    [Route("api/[Controller]")]
     public class RunnersController : Controller
     {
         private readonly IRaceRepository _repository;
@@ -30,6 +30,7 @@ namespace RunningMVC.Controllers
         public IActionResult Get()
         {
             try
+            
             {
                 return Ok(_mapper.Map<IEnumerable<Runner>, IEnumerable<RunnerViewModel>>(_repository.GetAllRunners()));
             }
@@ -57,7 +58,7 @@ namespace RunningMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] RunnerViewModel model)
+        public IActionResult CreateRunner([FromForm] RunnerViewModel model)
         {
             try
             {
