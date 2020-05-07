@@ -20,12 +20,12 @@ namespace RunningMVC.Controllers
             return View();
         }
 
-        [HttpGet("races")]
-        public IActionResult Races(int raceId = -1)
+        [HttpGet]
+        public IActionResult Races(int id = -1)
         {
-            if (raceId == -1) raceId = _repository.GetFirstRace().Id;
-            var races = _repository.GetAllRaces(raceId).ToList();
-            ViewBag.raceId = raceId;
+            if (id == -1) id = _repository.GetFirstRace().Id;
+            var races = _repository.GetAllRaces(id).ToList();
+            ViewBag.raceId = id;
             return View(races);
         }
 

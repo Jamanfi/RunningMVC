@@ -48,7 +48,7 @@ namespace RunningMVC.Controllers
                 var runner = _repository.GetRunnerById(id);
 
                 if (runner != null) return Ok(_mapper.Map<Runner, RunnerViewModel>(runner));
-                return NotFound($"No runner with Id {id} not found.");
+                return NotFound($"No runner with Id {id} found.");
             }
             catch (Exception ex)
             {

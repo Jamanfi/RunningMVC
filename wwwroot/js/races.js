@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
     var seconds = 0;
+    console.log("hello");
+    console.log(racesModel);
     $('.duration-picker').durationPicker({
         showSeconds: true,
         showDays: false,
@@ -19,7 +21,7 @@
 
     });
 
-    $("#btnSubmit").click(function() {
+    $("#btnSubmit").click(function () {
         var selectBox = $("#selectRunner")[0];
         var runnerId = selectBox.options[selectBox.selectedIndex].value;
         const url = `http://${window.location.host}/api/races?raceId=${raceId}&runnerId=${runnerId}&seconds=${seconds}`;
@@ -28,6 +30,8 @@
             function (result) {
                 console.log("RESPONSE RECEIVED");
                 console.log(result);
+
+                location.reload();  
             });
 
     });
@@ -40,13 +44,28 @@
         $.getJSON(url,
             function (data) {
                 let option;
+                var currentCompetitors;
+                racesModel.forEach(function (model) {
+                    if (model.competitors) { currentCompetitors = model.competitors; }
+                });
                 for (let i = 0; i < data.length; i++) {
+                    if (isCompetitor(currentCompetitors, data[i].runnerId)) { continue; }
                     option = document.createElement('option');
                     option.text = data[i].forename + " " + data[i].surname;
                     option.value = data[i].runnerId;
                     dropdown.append(option);
                 }
             });
+
+        function isCompetitor(competitors, runnerId) {
+            for (let i = 0; i < competitors.length; i++) {
+                if (competitors[i].runner.id === runnerId) {
+                    console.log("Competitor exists: " + competitors[i].runner.forename);
+                    return true;
+                }
+            }
+            return false;
+        };
 
 
     });

@@ -1,14 +1,30 @@
 ﻿@model List<Race>
 @{ var currentRace = @Model.Find(r => r.Id == ViewBag.RaceId);}
-    <script type="text/javascript">
+<script type="text/javascript">
     var raceId = @currentRace.Id;
-    </script>
+    var racesModel = @Html.Raw(Json.Serialize(Model));
+</script>
+
+@functions {
+
+    public int CalculateAge(DateTime birthday)
+    {
+        var today = DateTime.Today;
+        var age = today.Year - birthday.Year;
+        if (today.Month < birthday.Month)
+        {
+            age--;
+        }
+        return age;
+    }
+
+}
 
 <body>
     <div class="text-center">
         @foreach (var r in Model)
         {
-            <a asp-controller="App" asp-action="Races" asp-route-raceId="@r.Id">@r.Name</a>
+            <a asp-controller="App" asp-action="Races" asp-route-id="@r.Id">@r.Name</a>
             @if (Model.IndexOf(r) < Model.Count() - 1)
             {
                 <span> | </span>
@@ -34,7 +50,7 @@
                     <div class="col-3 border bg-light rounded mr-1 p-3">
                         <h5>@c.Runner.Forename @c.Runner.Surname</h5>
                         <span>Nationality: @c.Runner.Nationality</span><br />
-                        <span>Age: @(DateTime.Today.Year - @c.Runner.DateOfBirth.Year)</span><br />
+                        <span>Age: @CalculateAge(c.Runner.DateOfBirth)</span><br />
                         <span>Finish Time: @c.FinishTime</span>
                     </div>
                 }
@@ -47,23 +63,24 @@
                 <div id="newComp">
                     <div class="card card-body bg-light">
                         <div class="form-group">
-                                <label>Runner:</label>
-                                <select id="selectRunner" class="form-control">
-                                    <option disabled selected>Select Runner</option>
-                                </select>
-                                <span class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label>Finish Time:</label>
-                                <div class="duration-picker"></div>
-                                <span class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <button id="btnSubmit" class="btn btn-primary btn-lg"><i class="fas fa-running"></i> Add Competitor</button>
-                            </div>
+                            <label>Runner:</label>
+                            <select id="selectRunner" class="form-control">
+                                <option disabled selected>Select Runner</option>
+                            </select>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Finish Time:</label>
+                            <div class="duration-picker"></div>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button id="btnSubmit" class="btn btn-primary btn-lg"><i class="fas fa-running"></i> Add Competitor</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<script src="~/js/races.js"></script>
 </body>
