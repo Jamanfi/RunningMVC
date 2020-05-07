@@ -1,5 +1,9 @@
 ﻿@model List<Race>
 @{ var currentRace = @Model.Find(r => r.Id == ViewBag.RaceId);}
+    <script type="text/javascript">
+    var raceId = @currentRace.Id;
+    </script>
+
 <body>
     <div class="text-center">
         @foreach (var r in Model)
@@ -42,9 +46,7 @@
                 </div>
                 <div id="newComp">
                     <div class="card card-body bg-light">
-                        <form method="post">
-                            <div></div>
-                            <div class="form-group">
+                        <div class="form-group">
                                 <label>Runner:</label>
                                 <select id="selectRunner" class="form-control">
                                     <option disabled selected>Select Runner</option>
@@ -57,9 +59,8 @@
                                 <span class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-running"></i> Add Competitor</button>
+                                <button id="btnSubmit" class="btn btn-primary btn-lg"><i class="fas fa-running"></i> Add Competitor</button>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

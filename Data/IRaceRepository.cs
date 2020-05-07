@@ -16,5 +16,6 @@ namespace RunningMVC.Data
         Runner GetRunnerById(int id);
         void AddEntity(object model);
         bool SaveAll();
+        Competitor AddCompetitor(int runnerId, int seconds, int raceId);
     }
 }

@@ -64,7 +64,23 @@ namespace RunningMVC.Data
 
         public bool SaveAll()
         {
-           return _context.SaveChanges() > 0;
+            return _context.SaveChanges() > 0;
+        }
+
+        public Competitor AddCompetitor(int runnerId, int seconds, int raceId)
+        {
+            var finishTime = new TimeSpan(0, 0, seconds).ToString();
+            var newCompetitor = new Competitor()
+            {
+                FinishTime = finishTime,
+                Runner = _context.Runners.Find(runnerId)
+
+            };
+            var race = _context.Races.Where(r => r.Id == raceId).Include(r=> r.Competitors).FirstOrDefault();
+            if (race == null) return null;
+            race.Competitors.Add(newCompetitor);
+            return newCompetitor;
+
         }
     }
 }
