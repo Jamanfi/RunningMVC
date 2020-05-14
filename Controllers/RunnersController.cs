@@ -13,6 +13,9 @@ using Microsoft.Extensions.Logging;
 
 namespace RunningMVC.Controllers
 {
+    [Route("api/[Controller]")]
+    [ApiController]
+    [Produces("application/json")]
     public class RunnersController : Controller
     {
         private readonly IRaceRepository _repository;
