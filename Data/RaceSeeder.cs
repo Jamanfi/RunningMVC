@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace RunningMVC.Data
@@ -15,16 +16,31 @@ namespace RunningMVC.Data
     {
         private readonly RaceContext _ctx;
         private readonly IWebHostEnvironment _hosting;
+        private readonly UserManager<User> _userManager;
 
-        public RaceSeeder(RaceContext ctx, IWebHostEnvironment hosting)
+        public RaceSeeder(RaceContext ctx, IWebHostEnvironment hosting, UserManager<User> userManager)
         {
             _ctx = ctx;
             _hosting = hosting;
+            _userManager = userManager;
         }
 
-        public void Seed()
+        public async Task SeedAsync()
         {
             _ctx.Database.EnsureCreated();
+
+            string email = "j.fitzgerald@nfer.ac.uk";
+            User user = await _userManager.FindByEmailAsync(email) ?? new User()
+            {
+                Email = email,
+                UserName = "fitzgeraldj"
+            };
+
+            var result = await _userManager.CreateAsync(user, "Nfer2020!");
+            if (result != IdentityResult.Success)
+            {
+                throw new InvalidOperationException("Could not create new user in seeder");
+            }
 
             if (!_ctx.Runners.Any())
             {

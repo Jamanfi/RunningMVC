@@ -21,7 +21,7 @@ namespace RunningMVC
             using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<RaceSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
 
         }

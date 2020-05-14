@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using RunningMVC.Data;
 using RunningMVC.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +46,7 @@ namespace RunningMVC.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public ActionResult CreateCompetitor(int raceId, int runnerId, int seconds)
         {
             try

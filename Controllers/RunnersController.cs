@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using RunningMVC.Data;
 using RunningMVC.Data.Entities;
@@ -60,6 +61,7 @@ namespace RunningMVC.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateRunner([FromForm] RunnerViewModel model)
         {
