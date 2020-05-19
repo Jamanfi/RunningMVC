@@ -30,17 +30,22 @@ namespace RunningMVC.Data
             _ctx.Database.EnsureCreated();
 
             string email = "j.fitzgerald@nfer.ac.uk";
-            User user = await _userManager.FindByEmailAsync(email) ?? new User()
+            User user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
             {
-                Email = email,
-                UserName = "fitzgeraldj"
-            };
+                user = new User()
+                {
+                    Email = email,
+                    UserName = "fitzgeraldj"
+                };
 
-            var result = await _userManager.CreateAsync(user, "Nfer2020!");
-            if (result != IdentityResult.Success)
-            {
-                throw new InvalidOperationException("Could not create new user in seeder");
+                var result = await _userManager.CreateAsync(user, "Nfer2020!");
+                if (result != IdentityResult.Success)
+                {
+                    throw new InvalidOperationException("Could not create new user in seeder");
+                }
             }
+
 
             if (!_ctx.Runners.Any())
             {

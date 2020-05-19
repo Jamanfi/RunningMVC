@@ -30,7 +30,7 @@ namespace RunningMVC.Controllers
         }
 
 
-        [HttpGet("runners")]
+        [HttpGet]
         public IActionResult Runners()
         {
             ViewBag.Title = "Runners";

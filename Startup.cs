@@ -62,6 +62,8 @@ namespace RunningMVC
             app.UseRouting();
             app.UseNodeModules();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(cfg =>
             {

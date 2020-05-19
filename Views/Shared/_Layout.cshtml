@@ -10,7 +10,7 @@
     <link href="~/node_modules/%40fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
 </head>
 <body>
-    <header class="container">
+    <header class="container-fluid">
         <nav class="navbar navbar-dark bg-dark navbar-expand-md">
             <h1 class="navbar-brand"><i class="fas fa-running fa-lg" id="runningIcon"></i>James's Running Website</h1>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#theMenu">
@@ -27,6 +27,19 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="App" asp-action="Runners">Runners</a>
                     </li>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                    }
+
                 </ul>
             </div>
         </nav>

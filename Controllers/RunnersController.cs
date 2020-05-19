@@ -73,7 +73,7 @@ namespace RunningMVC.Controllers
                     _repository.AddEntity(newRunner);
                     if (_repository.SaveAll())
                     {
-                        return Created($"/api/runners/{newRunner.Id}", _mapper.Map<Runner, RunnerViewModel>(newRunner));
+                        return Created($"/App/Runners/", _mapper.Map<Runner, RunnerViewModel>(newRunner));
                     }
                 }
             }
