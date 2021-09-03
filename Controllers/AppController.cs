@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using RunningMVC.ViewModels;
+using System.Collections.Generic;
 using RunningMVC.Data;
 using System.Linq;
-using RunningMVC.Data.Entities;
+using System.Text;
+using FusionCharts.Charts;
 
 namespace RunningMVC.Controllers
 {
