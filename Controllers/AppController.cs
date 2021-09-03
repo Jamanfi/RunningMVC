@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using RunningMVC.Data;
 using System.Linq;
-using System.Text;
-using FusionCharts.Charts;
 
 namespace RunningMVC.Controllers
 {
